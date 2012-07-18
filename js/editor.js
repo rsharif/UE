@@ -1,7 +1,5 @@
 $(document).ready(function(){
-	
-	var enabledPlugins = ["fonts"];
-	 
+
 	var parentDiv = $("#main");
 	var controlsDiv;
 	(function createControlDiv(){
@@ -21,10 +19,10 @@ $(document).ready(function(){
 	
 	var contentDiv ;
 	(function createContentDiv(){
-		controlsDiv = $("<div/>",{
+		contentDiv = $("<div/>",{
 			id : "contentDiv",
 		}).appendTo(parentDiv);
-		controlsDiv.css({
+		contentDiv.css({
 			"border" : "1px solid",
 			"padding-top" : "10px",
 			"padding-bottom" : "10px",
@@ -36,11 +34,12 @@ $(document).ready(function(){
 	
 	contentDiv.parent = parentDiv;
 	
+	var enabledPlugins = [new TextColor()];
+	
 	(function createControls( controlsDiv ){
-		var control;
 		$.each(enabledPlugins , function(index, plugin){
 			 controlsDiv.append(plugin.getElement());
 		});
-	})();
+	})(controlsDiv);
 	
 });
