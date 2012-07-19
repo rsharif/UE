@@ -26,8 +26,7 @@ $(document).ready(function(){
 			"border" : "1px solid",
 			"padding-top" : "10px",
 			"padding-bottom" : "10px",
-			"min-height" : "100px"
-			
+			"min-height" : "100px"	
 		});
 		
 	})();
@@ -35,7 +34,6 @@ $(document).ready(function(){
 	contentDiv.parent = parentDiv;
 	
 	var enabledPlugins = [new TextColor()];
-	
 	(function createControls( controlsDiv ){
 		$.each(enabledPlugins , function(index, plugin){
 			 controlsDiv.append(plugin.getElement());
