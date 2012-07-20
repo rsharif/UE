@@ -133,8 +133,8 @@ var ColorPicker = function (element){
 				"display" : "inline-block"
 			});
 			colorDiv.on('click',function(){
-				
 				selectedColor = $(this).css("background-color");
+				gridPicker.hide();
 			});
 		});
 	}
