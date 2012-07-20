@@ -5,10 +5,15 @@ var TextColor = function (){
 		html : "color",
 		id : "color"	
 	});
-
+	
+	var colorPicker;
+	
 	function clickHandler(){
 		//TODO give implementation
-		var colorPicker = new ColorPicker(element);
+		colorPicker = new ColorPicker(element);
+	}
+	function getSelectedColor(){
+		return colorPicker.getSelectedColor();
 	}
 	
 	element.click(clickHandler); 
@@ -16,11 +21,14 @@ var TextColor = function (){
 	function getElement(){
 		return element;
 	}
-	return { "getElement": getElement };
+	return { 
+			 "getElement": getElement,
+			 "getSelectedColor" : getSelectedColor 
+		   };
 };
 
 var ColorPicker = function (element){
-	
+	var selectedColor ; 
 	var gridPicker = $("<div/>",{
 		id : "gridColorPicker",
 	}).appendTo($("body"));
@@ -78,8 +86,32 @@ var ColorPicker = function (element){
 	
 	})();
 	
+	(function insertCustomColorsRow(){
+		
+		var customDiv = $("<div/>",{ html : "Custom..." }).appendTo(gridPicker);
+		customDiv.css({"padding":"5px 0 5px 0" , "font":"normal 13px arial,sans-serif"} );
+		customDiv.on("mouseover",function(){ 
+			$(this).css( { "background-color":"rgb(239,239,239)" });
+		});
+		customDiv.on("mouseout",function(){ 
+			$(this).css( { "background-color":"rgb(255,255,255)" });
+		});
+		
+		var rowColors = ["rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)"]
+		var rowDiv = $("<div/>",{"id":"customRowColors"}).appendTo(gridPicker);
+		rowDiv.css({"margin":"5px 0px 5px 0px"});
+		insertColors(rowColors , rowDiv);
+		
+		$.each($("#customRowColors > div") , function(index,color){
+			$(color).css({"border-color":"#CCCCCC"});
+			$(color).unbind('mouseout mouseover');
+		});
+	
+	});
+	
 	function insertColors(rowColors , rowDiv){
 		$.each(rowColors , function (index, color){
+			
 			var colorDiv = $("<div/>",{			
 			}).appendTo(rowDiv);
 			colorDiv.mouseover(function(){
@@ -100,6 +132,10 @@ var ColorPicker = function (element){
 				"min-height": "16px",
 				"display" : "inline-block"
 			});
+			colorDiv.on('click',function(){
+				
+				selectedColor = $(this).css("background-color");
+			});
 		});
 	}
 	
@@ -107,14 +143,12 @@ var ColorPicker = function (element){
 	element.unbind('click');
 	$(element).click(function(event){
 			gridPicker.toggle();
-			console.log("togglin")
 	});
 	
 	/* If color picker is visible , then clicking anywhere on the body except 'color' div should hide the picker.
 	 *  'color' div has its own even handler define above to control visibility of picker */
 	$("body").click(function(event){
 			if(event.target.id !== 'color'){
-				console.log("hiding");				
 				gridPicker.is(":visible") ? gridPicker.hide() : "";
 			}
 		
@@ -125,5 +159,10 @@ var ColorPicker = function (element){
 		event.stopPropagation();
 	});	
  
-   
+   function getSelectedColor(){
+   		return selectedColor;
+   }
+   return {
+   		"getSelectedColor" : getSelectedColor
+   }
 }

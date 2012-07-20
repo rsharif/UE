@@ -49,7 +49,68 @@
 			ok(!$("#gridColorPicker").is(":visible"),"ColorPicker Div is hidden now");
 		});
 		
+		test('clickingFirstColorShouldSetValueToBlack',function(){
+			//show first
+			textColor.getElement().click();
+			ok($("#gridColorPicker").is(":visible"),"ColorPicker Div is visible");
+			//hide
+			$($("#firstRowColors > div")[0]).click();
+			equal(textColor.getSelectedColor(),"rgb(0, 0, 0)","Color is set to black");
+		});
 		
+		test('clickingFirstColorShouldSetValueToGrey',function(){
+			//show first
+			textColor.getElement().click();
+			ok($("#gridColorPicker").is(":visible"),"ColorPicker Div is visible");
+			//hide
+			$($("#firstRowColors > div")[5]).click();
+			equal(textColor.getSelectedColor(),"rgb(204, 204, 204)","Color is set to grey");
+		});
+		
+		test('clickingFirstColorShouldSetValueToWhite',function(){
+			//show first
+			textColor.getElement().click();
+			ok($("#gridColorPicker").is(":visible"),"ColorPicker Div is visible");
+			//hide
+			$($("#firstRowColors > div")[9]).click();
+			equal(textColor.getSelectedColor(),"rgb(255, 255, 255)","Color is set to white");
+		});
+		
+		test('clickingFirstColorShouldSetValueToWhite',function(){
+			//show first
+			textColor.getElement().click();
+			ok($("#gridColorPicker").is(":visible"),"ColorPicker Div is visible");
+			//hide
+			$($("#firstRowColors > div")[9]).click();
+			equal(textColor.getSelectedColor(),"rgb(255, 255, 255)","Color is set to white");
+		});
+		
+		test('clickingFirstColorShouldSetValueToMaron',function(){
+			//show first
+			textColor.getElement().click();
+			ok($("#gridColorPicker").is(":visible"),"ColorPicker Div is visible");
+			//hide
+			$($("#secondRowColors > div")[0]).click();
+			equal(textColor.getSelectedColor(),"rgb(152, 0, 0)","Color is set to Maron");
+		});
+		
+		test('clickingFirstColorShouldSetValueToMaron',function(){
+			//show first
+			textColor.getElement().click();
+			ok($("#gridColorPicker").is(":visible"),"ColorPicker Div is visible");
+			//hide
+			$($("#secondRowColors > div")[0]).click();
+			equal(textColor.getSelectedColor(),"rgb(152, 0, 0)","Color is set to Maron");
+		});
+		
+		test('clickingFirstColorShouldSetValueToBlue',function(){
+			//show first
+			textColor.getElement().click();
+			ok($("#gridColorPicker").is(":visible"),"ColorPicker Div is visible");
+			//hide
+			$($("#secondRowColors > div")[7]).click();
+			equal(textColor.getSelectedColor(),"rgb(0, 0, 255)","Color is set to Blue");
+		});
 		
 		 
 	</script>
