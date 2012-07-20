@@ -27,6 +27,7 @@
 		});
 		test('clickShouldDisplayPicker',function(){
 			textColor.getElement().click();
+			console.log($("#gridColorPicker").html());
 			ok($("#gridColorPicker").is(":visible"),"ColorPicker Div is visible");
 			
 		});
