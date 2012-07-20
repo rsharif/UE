@@ -30,7 +30,7 @@ var TextColor = function (){
 var ColorPicker = function (element){
 	var selectedColor ; 
 	var gridPicker = $("<div/>",{
-		id : "gridColorPicker",
+		id : "gridColorPicker"
 	}).appendTo($("body"));
 	
 	var left = element.offset().left+20;

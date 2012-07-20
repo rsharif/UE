@@ -20,7 +20,7 @@ $(document).ready(function(){
 	var contentDiv ;
 	(function createContentDiv(){
 		contentDiv = $("<div/>",{
-			id : "contentDiv",
+			id : "contentDiv"
 		}).appendTo(parentDiv);
 		contentDiv.css({
 			"border" : "1px solid",
