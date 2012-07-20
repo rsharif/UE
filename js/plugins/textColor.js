@@ -8,7 +8,7 @@ var TextColor = function (){
 
 	function clickHandler(){
 		//TODO give implementation
-		colorPicker = new ColorPicker(element);
+		var colorPicker = new ColorPicker(element);
 	}
 	
 	element.click(clickHandler); 
@@ -107,13 +107,16 @@ var ColorPicker = function (element){
 	element.unbind('click');
 	$(element).click(function(event){
 			gridPicker.toggle();
+			console.log("togglin")
 	});
 	
 	/* If color picker is visible , then clicking anywhere on the body except 'color' div should hide the picker.
 	 *  'color' div has its own even handler define above to control visibility of picker */
 	$("body").click(function(event){
-			if(event.target.id !== 'color')
-			gridPicker.is(":visible") ? gridPicker.hide() : "";
+			if(event.target.id !== 'color'){
+				console.log("hiding");				
+				gridPicker.is(":visible") ? gridPicker.hide() : "";
+			}
 		
 	});
 	
@@ -121,4 +124,6 @@ var ColorPicker = function (element){
 	gridPicker.click(function(event){
 		event.stopPropagation();
 	});	
+ 
+   
 }

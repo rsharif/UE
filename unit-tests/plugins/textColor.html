@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>QUnit Test Suite</title>
+	<link rel="stylesheet" href="../qunit.css" type="text/css" media="screen">
+	<script src='../../js/thirdParty/jquery.js'></script>
+	<script type="text/javascript" src="../qunit.js"></script>
+	<!-- Your project file goes here -->
+	<script type="text/javascript" src="../../js/plugins/textColor.js"></script>
+	<!-- Your tests file goes here -->
+	<script type="text/javascript">
+		
+		var textColor
+		module("Color Picker Tests",{
+			setup : function(){
+				textColor = new TextColor();
+				$("body").append(textColor.getElement);
+			} ,
+			teardown : function(){
+				textColor.getElement().remove();
+				$("#gridColorPicker").remove();
+			}
+		});
+		test('colorSpanDisplay',function(){
+			ok(textColor.getElement().is(":visible"),"color element is visible")
+			equal(textColor.getElement().attr("id"),"color" , "ID is set to color");
+		});
+		test('clickShouldDisplayPicker',function(){
+			textColor.getElement().click();
+			ok($("#gridColorPicker").is(":visible"),"ColorPicker Div is visible");
+			
+		});
+		test('clickAgainShouldHidePicker',function(){
+			//show first
+			textColor.getElement().click();
+			ok($("#gridColorPicker").is(":visible"),"ColorPicker Div is visible");
+			//hide
+			textColor.getElement().click();
+			ok(!$("#gridColorPicker").is(":visible"),"ColorPicker Div is hidden now");
+			
+		});
+		
+		test('clickOnBodyShouldHidePicker',function(){
+			//show first
+			textColor.getElement().click();
+			ok($("#gridColorPicker").is(":visible"),"ColorPicker Div is visible");
+			//hide
+			$('body').click();
+			ok(!$("#gridColorPicker").is(":visible"),"ColorPicker Div is hidden now");
+		});
+		
+		
+		
+		 
+	</script>
+</head>
+<body>
+	<h1 id="qunit-header">QUnit Test Suite</h1>
+	<h2 id="qunit-banner"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+</body>
+</html>
