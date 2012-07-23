@@ -1,6 +1,14 @@
 $(document).ready(function(){
 
 	var parentDiv = $("#main");
+	$('body').css({
+		"margin": "0px"
+	});
+	
+	$('body').css({
+		"background-color": "#EBEBEB"
+	});
+	
 	var controlsDiv;
 	(function createControlDiv(){
 		controlsDiv = $("<div/>",{
@@ -9,24 +17,47 @@ $(document).ready(function(){
 		
 		controlsDiv.css({
 			
-			"background-color":"#666",
+			"background-color":"whiteSmoke",
 			"padding-top" : "10px",
-			"padding-bottom" : "10px"
+			"padding-bottom" : "10px",
+			"border-top" : "1px solid #E5E5E5",
+			"border-bottom" : "1px solid #E5E5E5",
+			"min-height" : "22px"
 			
 		});
 		controlsDiv.parent = parentDiv;
 	})();
 	
-	var contentDiv ;
+	var contentContainerDiv ;
 	(function createContentDiv(){
-		contentDiv = $("<div/>",{
-			id : "contentDiv"
+		contentContainerDiv = $("<div/>",{
+			id : "contentContainerDiv"
 		}).appendTo(parentDiv);
-		contentDiv.css({
-			"border" : "1px solid",
+		contentContainerDiv.css({
 			"padding-top" : "10px",
 			"padding-bottom" : "10px",
-			"min-height" : "100px"	
+			"min-height" : "100px",
+			"text-align" : "center"	
+		});
+		
+	})();
+	
+	var contentDiv;
+	(function(){
+		contentDiv=$("<div/>",{
+			id : "contentDiv"
+		}).appendTo(contentContainerDiv);
+		
+		contentDiv.css({
+			"background-color" : "white",
+			"width" : "818px",
+			"height" : "100%",
+			"margin" : "auto",
+			"border" : "1px solid #DADADA",
+			"-moz-box-shadow" : "0 0 4px rgba(0, 0, 0, 0.1)",
+   			"-webkit-box-shadow" : "0 0 4px rgba(0, 0, 0, 0.1)",
+   			"box-shadow" :  "0 0 4px rgba(0, 0, 0, 0.1)"  //TODO Adjust for IE
+   			
 		});
 		
 	})();
@@ -38,6 +69,6 @@ $(document).ready(function(){
 		$.each(enabledPlugins , function(index, plugin){
 			 controlsDiv.append(plugin.getElement());
 		});
-	})(controlsDiv);
+	})//(controlsDiv);
 	
 });
