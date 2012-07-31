@@ -1,10 +1,19 @@
 <html>
 	<head>
+		<link href="./css/index.css" rel="stylesheet" type="text/css"/> 
 		<script src='./js/thirdParty/jquery.js'></script>
 		<script src='./js/plugins/textColor.js'></script>
 		<script src='./js/editor.js'></script>
+		<script>
+		</script>
 	</head>
 	<body>
-		<div id="main"></div>
+		<div id="main" style="height:100%">
+			<div id="controlsDiv" class="controlsDiv"></div>
+			<iframe  id="writingFrame" style=" overflow-y : scroll; margin:auto ;position:fixed; height:100% ; width: 100%;  border:0px" src="./html/iFrameSource.html">		
+        	</iframe>
+			</div>
+		</div>
+		
 	</body>
 </html>
