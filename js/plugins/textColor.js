@@ -1,12 +1,25 @@
 var TextColor = function (){
 	
-	var element = $("<span/>" , {
-		style : "cursor : pointer",
-		html : "color",
+	var element = $("<div/>" , {
 		id : "color"	
 	});
 	
 	var colorPicker;
+	
+	element.css({
+		"background" : 'url("images/sprite.png")',
+		"background-position" : "-20px -516px",
+		"width" : "20px",
+		"height" : "20px",
+		"background-repeat" : "no-repeat",
+		"display" : "inline-block"
+	});
+	
+	element.hover(function onMouseEnter(){
+		element.css("box-shadow","0px 0px 2px rgba(0,0,0,0.50)");
+	}, function onMouseLeave(){
+		element.css("box-shadow","0px 0px 0px rgba(0,0,0,0)");
+	});
 	
 	function clickHandler(){
 		//TODO give implementation
@@ -97,7 +110,7 @@ var ColorPicker = function (element){
 			$(this).css( { "background-color":"rgb(255,255,255)" });
 		});
 		
-		var rowColors = ["rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)"]
+		var rowColors = ["rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)","rgb(255,255,255)"];
 		var rowDiv = $("<div/>",{"id":"customRowColors"}).appendTo(gridPicker);
 		rowDiv.css({"margin":"5px 0px 5px 0px"});
 		insertColors(rowColors , rowDiv);

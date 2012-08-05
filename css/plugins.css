@@ -1,0 +1,21 @@
+.controlDefault{
+	background : url(../images/sprite.png) ;
+	width : 20px;
+	height : 20px;
+	background-repeat : no-repeat;
+	display : inline-block	
+}
+
+.bold{
+	.controlDefault;
+	background-position : -20px -370px;	
+}
+
+.italic {
+	.controlDefault;
+	background-position : -20px -863px;
+}
+.underline{
+	.controlDefault;
+	background-position : 0px -115px	
+}
