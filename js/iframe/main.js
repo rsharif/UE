@@ -55,10 +55,21 @@ function load(){
 					/* This block just handles the insertion for first character in a new line which is created by splitting the previous line 
 					 * i.e by pressing enter in the line which already contains some text
 					 */
+					//Get the whole line content on whose start we have the cursor
 					var nextChild = anchorNode.childNodes[start];
-					textNode = document.createTextNode(urduCharacter + nextChild.wholeText);
-					$($(anchorNode).contents()[start]).remove();
-					$($(anchorNode).contents()[start-1]).after(textNode);
+					//create new textnode by adding the urducharacter at the start of the line text
+					var textNode;
+					if (nextChild.nodeName == "#text") {
+						textNode = document.createTextNode(urduCharacter + nextChild.wholeText);
+						//remove the nextChild ( its previous content will be removed 
+						$($(anchorNode).contents()[start]).remove();
+					}
+					else {
+						textNode = document.createTextNode(urduCharacter);
+					}
+					//add the newly created textnode in its place
+					$($(anchorNode).contents()[start -1 ]).after(textNode);
+					//create and set new document range
 					var newRange = document.createRange();
 					newRange.setStart(textNode, 1);
 					newRange.setEnd(textNode, 1);
