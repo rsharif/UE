@@ -19,7 +19,7 @@ function load(){
 		var anchorNode = selection.anchorNode;
 		
 		var pressedKeyCode = event.which;
-		if(pressedKeyCode < 90 || pressedKeyCode > 124 ){
+		if( ! ((pressedKeyCode >=65 && pressedKeyCode <=90) || (pressedKeyCode >= 97 && pressedKeyCode <=122 ))){
 			//Let browser do the default
 			return true;	
 		} 
