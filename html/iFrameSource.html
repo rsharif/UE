@@ -1,7 +1,6 @@
 <html  dir="rtl">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<head>
-		
+	<head>	
 		<script type="application/javascript">
 			/* Well css/js files added here normally will not be reloaded by browser , somehow browser permanently cached them 
 			 * So we will add files dynanimcally using javascript . If you want to add any other js/css file added below 
@@ -28,8 +27,8 @@
 			
 			function init(){
 								
-				cssFiles.forEach(function(file) { insertCss(file); })
-				jsFiles.forEach(function(file) { insertJs(file); })
+				cssFiles.forEach(function(file) { insertCss(file); });
+				jsFiles.forEach(function(file) { insertJs(file); });
 			
 			}
 			
@@ -52,11 +51,11 @@
 			}
 			
 		</script>	
-
 	</head>
-    <body style="overflow:visible" onload="load();">
-    	<div id="contentContainer" class="contentContainer" contenteditable="true" dir="rtl">
-	        <div id="contentPage" class="contentPage" dir="rtl" ></div>
+	
+    <body style="overflow:visible" onload="load();" dir="rtl">
+    	<div id="contentContainer" class="contentContainer" dir="rtl">	
+	        <div id="contentPage" class="contentPage" contenteditable="true"></div>
 		<div>
     </body>
 </html>

@@ -13,21 +13,26 @@ body {
 	background-color: #EBEBEB !important;
 	overflow : visible;
 }
+.mozLayer {
+
+}
 .contentContainer {
-	
 	margin : 10px auto 10px auto;
 	width : 818px;
-	outline: 0px;
 	min-height: 800px;
 	background-color : white;
 	-moz-box-shadow : 0 0 4px rgba(0, 0, 0, 0.1);
 	-webkit-box-shadow : 0 0 4px rgba(0, 0, 0, 0.1);
 	box-shadow :  0 0 4px rgba(0, 0, 0, 0.1) ; <!-- TODO Adjust for IE -->
 	border : 1px solid #DADADA;
+	font-family:Jameel,XPZiba ;
 }
 
 .contentPage {
-	min-height:20px;	
+		
 	font-family:Jameel,XPZiba ;
-	white-space:pre-wrap
+	white-space:pre-wrap;
+	min-height : 800px;
+	outline: 0px;
+
 }
