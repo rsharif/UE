@@ -5,7 +5,8 @@
 			/* Well css/js files added here normally will not be reloaded by browser , somehow browser permanently cached them 
 			 * So we will add files dynanimcally using javascript . If you want to add any other js/css file added below 
 			 */
-		    var cssFiles = ["../css/iframe/frameSource.css"];
+		    var cssFiles = ["../css/iframe/frameSource.css"]//["../css/iframe/frameSource.css"];
+			var cssPrintFiles = ["../css/iframe/print.css"]//["../css/iframe/print.css"];
 			var jsFiles = ["../js/thirdParty/jquery.js","../js/iframe/myKeyboard.js","../js/iframe/main.js"];
 			
 			/* manually have to listen for document.ready function because jquery is not yet avaible to us
@@ -28,6 +29,7 @@
 			function init(){
 								
 				cssFiles.forEach(function(file) { insertCss(file); });
+				cssPrintFiles.forEach(function(file) { insertPrintCss(file); });
 				jsFiles.forEach(function(file) { insertJs(file); });
 			
 			}
@@ -49,13 +51,21 @@
 				cssNode.media = 'screen';
 				headID.appendChild(cssNode);
 			}
-			
+			function insertPrintCss(file){
+				var headID = document.getElementsByTagName("head")[0];         
+				var cssNode = document.createElement('link');
+				cssNode.type = 'text/css';
+				cssNode.rel = 'stylesheet';
+				cssNode.href = file+"?verions="+Date.now();
+				cssNode.media = 'print';
+				headID.appendChild(cssNode);
+			}
 		</script>	
 	</head>
 	
     <body style="overflow:visible" onload="load();" dir="rtl">
     	<div id="contentContainer" class="contentContainer" dir="rtl">	
-	        <div id="contentPage" class="contentPage" contenteditable="true"></div>
+	        <div id="contentPage" class="contentPage" contenteditable="true">خدا نے انسان کو اس لیئے پیدا کیا تا کہ وہ ایک دوسرے کے ساتھ محبت کا برتاؤکر یں. لیکن کچھ لوگ اپنی کم سمجھی اور لالچ کی وجہ سے دوسروں کا حق چھیننے کن کوشش کرتے ہیں. ہمیں چاہیے کہ</div>
 		<div>
     </body>
 </html>
