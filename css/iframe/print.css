@@ -1,0 +1,46 @@
+@font-face {
+	font-family: "Jameel";
+	src: url("../../fonts/jameel.ttf");
+}
+
+@font-face {
+	font-family: "XPZiba";
+	src: url("../../fonts/xp-ziba.ttf");
+}
+
+@page {
+	margin : 0mm;
+	
+}
+
+#BrowserPrintDefaults{	display:none} 
+
+
+body {
+	margin : 0px !important ;
+	width : 794px;
+	min-height: 1095px;
+	background-color : #EBEBEB;
+	font-family:Jameel,XPZiba ;
+	-webkit-print-color-adjust: exact;
+}
+
+.contentContainer {
+	
+	width : 754px;
+	min-height: 1095px;
+	background-color : #EBEBEB;
+	font-family:Jameel,XPZiba ;
+	padding : 0px 20px;
+}
+
+.contentPage {
+		
+	font-family:Jameel,XPZiba ;
+	white-space:pre-wrap;
+	min-height : 1095px;
+	outline: 0px;
+	font-size : 36px !important;
+	line-height: 
+
+}
