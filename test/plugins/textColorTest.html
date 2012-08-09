@@ -6,14 +6,25 @@
 	<script src='../../js/thirdParty/jquery.js'></script>
 	<script type="text/javascript" src="../qunit.js"></script>
 	<!-- Your project file goes here -->
-	<script type="text/javascript" src="../../js/plugins/textColor.js"></script>
+	<script type="text/javascript" src="../../js/plugins/miscControls.js"></script>
+	<script type="text/javascript" src="../../js/plugins/colorPicker.js"></script>
 	<!-- Your tests file goes here -->
 	<script type="text/javascript">
-		
+		/* Mocking utils.getFrameDocument */
+		utils = {
+			getFrameDocument: function(){
+				return {
+					execCommand: function(){
+					}
+				}
+			}
+		}
 		var textColor
 		module("Color Picker Tests",{
 			setup : function(){
-				textColor = new TextColor();
+				textColor = new TextColor("color");
+				textColor.colorSelectionCallback = function(){
+				};
 				$("body").append(textColor.getElement);
 			} ,
 			teardown : function(){
@@ -123,5 +134,6 @@
 	<div id="qunit-testrunner-toolbar"></div>
 	<h2 id="qunit-userAgent"></h2>
 	<ol id="qunit-tests"></ol>
+	
 </body>
 </html>

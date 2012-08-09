@@ -1,4 +1,4 @@
-.controlDefault{
+.controlDefault {
 	background : url(../images/sprite.png) ;
 	width : 20px;
 	height : 20px;
@@ -6,7 +6,7 @@
 	display : inline-block	
 }
 
-.bold{
+.bold {
 	.controlDefault;
 	background-position : -20px -370px;	
 }
@@ -15,7 +15,13 @@
 	.controlDefault;
 	background-position : -20px -863px;
 }
-.underline{
+.underline {
 	.controlDefault;
 	background-position : 0px -115px	
 }
+
+.colorPicker{
+	.controlDefault;
+	background-position : -20px -516px;
+}
+

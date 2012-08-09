@@ -1,53 +1,73 @@
-var Italic = function(){
-	var italicDiv = $("<div/>",{
-		id : "italic"
-	});
-
-	italicDiv.addClass("italic");
-	italicDiv.hover(function onMouseEnter(){
-		italicDiv.css("box-shadow","0px 0px 2px rgba(0,0,0,0.50)");
+function BaseButton(command){
+	
+	var div = $("<div/>");
+	
+	div.hover(function onMouseEnter(){
+		div.css("box-shadow","0px 0px 2px rgba(0,0,0,0.5)");
 	}, function onMouseLeave(){
-		italicDiv.css("box-shadow","0px 0px 0px rgba(0,0,0,0)");
+		div.css("box-shadow","0px 0px 0px rgba(0,0,0,0)");
 	});
-	return {
-		"getElement": function(){
-			return italicDiv;
-		}
+	
+	div.click(function(){
+		var frame = utils.getFrameDocument();
+		frame.execCommand(command,false,null);	
+	});
+	
+	this.getElement = function(){
+		return div;
 	};
+}
+ 
+ var Italic = function(){
+ 	BaseButton.call(this,'italic');
+	div = this.getElement();
+	div.attr("id","italic");
+	div.addClass("italic");	
 };
 
 var Bold = function(){
-	var boldDiv = $("<div/>",{
-		id : "bold"
-	});
-
-	boldDiv.addClass("bold");
-	boldDiv.hover(function onMouseEnter(){
-		boldDiv.css("box-shadow","0px 0px 2px rgba(0,0,0,0.5)");
-	}, function onMouseLeave(){
-		boldDiv.css("box-shadow","0px 0px 0px rgba(0,0,0,0)");
-	});
-	return {
-		"getElement": function(){
-			return boldDiv;
-		}
-	};
+	BaseButton.call(this,'bold');
+	div = this.getElement();
+	div.attr("id","bold");
+	div.addClass("bold");
 };
 
 var Underline = function(){
-	var underlineDiv = $("<div/>",{
-		id : "underline"
-	});
+	BaseButton.call(this,'underline');
+	div = this.getElement();
+	div.attr("id","underline");
+	div.addClass("underline");
+};
 
-	underlineDiv.addClass("underline");
-	underlineDiv.hover(function onMouseEnter(){
-		underlineDiv.css("box-shadow","0px 0px 2px rgba(0,0,0,0.50)");
-	}, function onMouseLeave(){
-		underlineDiv.css("box-shadow","0px 0px 0px rgba(0,0,0,0)");
-	});
-	return {
-		"getElement": function(){
-			return underlineDiv;
-		}
-	};
+var TextColor = function (id){
+	
+	BaseButton.call(this);
+	var element =this.getElement();
+	element.attr("id",id);
+	element.addClass("colorPicker");
+	
+	
+	var colorPicker;
+	
+	function colorSelectionCallback(){
+		var frame = utils.getFrameDocument();
+		frame.execCommand('forecolor',false,getSelectedColor());
+	}
+	
+	function clickHandler(event){
+		console.log("Clicked");
+		event.stopPropagation();
+		colorPicker = new ColorPicker(element , colorSelectionCallback);
+	}
+	
+	 function getSelectedColor(){
+		return colorPicker.getSelectedColor();
+	}
+	
+	//Do not need parent handler
+	element.unbind('click');
+	element.bind('click',clickHandler); 
+	
+	this.getSelectedColor = getSelectedColor;
+	
 };
