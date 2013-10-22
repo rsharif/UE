@@ -1,0 +1,37 @@
+@font-face {
+	font-family: "Jameel";
+	src: url("../../fonts/jameel.ttf");
+}
+
+@font-face {
+	font-family: "XPZiba";
+	src: url("../../fonts/xp-ziba.ttf");
+}
+
+body {
+	margin : 0px !important ;
+	background-color: #EBEBEB !important;
+	overflow : visible;
+	font-family:Jameel,XPZiba ;
+}
+.contentContainer {
+	margin : 10px auto 10px auto;
+	width : 793px;
+	min-height: 1122px;
+	background-color : white;
+	-moz-box-shadow : 0 0 4px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow : 0 0 4px rgba(0, 0, 0, 0.1);
+	box-shadow :  0 0 4px rgba(0, 0, 0, 0.1) ; <!-- TODO Adjust for IE -->
+	border : 1px solid #DADADA;
+	font-family:Jameel,XPZiba ;
+}
+
+.contentPage {
+		
+	font-family:Jameel,XPZiba ;
+	white-space:pre-wrap;
+	min-height : 1122px;
+	outline: 0px;
+	font-size : 16px !important;
+
+}

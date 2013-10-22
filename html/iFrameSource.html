@@ -1,0 +1,71 @@
+<html  dir="rtl">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<head>	
+		<script type="application/javascript">
+			/* Well css/js files added here normally will not be reloaded by browser , somehow browser permanently cached them 
+			 * So we will add files dynanimcally using javascript . If you want to add any other js/css file added below 
+			 */
+		    var cssFiles = ["../css/iframe/frameSource.css"]//["../css/iframe/frameSource.css"];
+			var cssPrintFiles = ["../css/iframe/print.css"]//["../css/iframe/print.css"];
+			var jsFiles = ["../js/thirdParty/jquery.js","../js/iframe/myKeyboard.js","../js/iframe/main.js"];
+			
+			/* manually have to listen for document.ready function because jquery is not yet avaible to us
+			 * in firefox adding jquery at front of the array makes $ visible immediately but not for chrome 
+			 * so we will manually listen for document ready function and start appending files
+			 */
+			
+			if ( document.addEventListener ) {
+				
+				// Use the handy event callback
+				document.addEventListener( "DOMContentLoaded", init, false );
+
+				// If IE event model is used
+			} else if ( document.attachEvent ) {
+				// ensure firing before onload,
+				// maybe late but safe also for iframes
+				document.attachEvent( "onreadystatechange", init );
+			}
+			
+			function init(){
+								
+				cssFiles.forEach(function(file) { insertCss(file); });
+				cssPrintFiles.forEach(function(file) { insertPrintCss(file); });
+				jsFiles.forEach(function(file) { insertJs(file); });
+			
+			}
+			
+			function insertJs(file){
+				var headID = document.getElementsByTagName("head")[0];         
+				var newScript = document.createElement('script');
+				newScript.type = 'text/javascript';
+				newScript.src = file+"?version="+Date.now();
+				headID.appendChild(newScript);
+			}
+			
+			function insertCss(file){
+				var headID = document.getElementsByTagName("head")[0];         
+				var cssNode = document.createElement('link');
+				cssNode.type = 'text/css';
+				cssNode.rel = 'stylesheet';
+				cssNode.href = file+"?verions="+Date.now();
+				cssNode.media = 'screen';
+				headID.appendChild(cssNode);
+			}
+			function insertPrintCss(file){
+				var headID = document.getElementsByTagName("head")[0];         
+				var cssNode = document.createElement('link');
+				cssNode.type = 'text/css';
+				cssNode.rel = 'stylesheet';
+				cssNode.href = file+"?verions="+Date.now();
+				cssNode.media = 'print';
+				headID.appendChild(cssNode);
+			}
+		</script>	
+	</head>
+	
+    <body style="overflow:visible"  onload="load()" dir="rtl">
+    	<div id="contentContainer" class="contentContainer" dir="rtl">	
+	        <div id="contentPage" class="contentPage" contenteditable="true">‎ایک دفعہ کا ذکر ہے کہ ایک کسان کے تین بیٹے تھے. وہ ہمیشہ ایک دوسرے سے لڑتے جھگڑتے رہتے تھے. کسان اپنی زندگی کی آخری سانسیں لے رہا تھا . اس نے ایک دن اپنے تینوں بیٹوں کو اکٹھا کیا.</div>
+		<div>
+    </body>
+</html>
