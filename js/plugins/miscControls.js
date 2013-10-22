@@ -32,6 +32,7 @@ var Bold = function(){
 	div.addClass("bold");
 };
 
+
 var Underline = function(){
 	BaseButton.call(this,'underline');
 	div = this.getElement();
@@ -39,28 +40,36 @@ var Underline = function(){
 	div.addClass("underline");
 };
 
+var FontSize = function(){
+
+	
+};
+
 var TextColor = function (id){
 	
 	BaseButton.call(this);
 	var element =this.getElement();
 	element.attr("id",id);
-	element.addClass("colorPicker");
+	element.addClass("colorControl");
 	
+	var pointer = $("<div/>",{
+	}).appendTo(element);
+	
+	pointer.addClass("pointer");
 	
 	var colorPicker;
-	
 	function colorSelectionCallback(){
 		var frame = utils.getFrameDocument();
 		frame.execCommand('forecolor',false,getSelectedColor());
 	}
 	
 	function clickHandler(event){
-		console.log("Clicked");
 		event.stopPropagation();
 		colorPicker = new ColorPicker(element , colorSelectionCallback);
 	}
 	
 	 function getSelectedColor(){
+	 	console.log(colorPicker.getSelectedColor());
 		return colorPicker.getSelectedColor();
 	}
 	
